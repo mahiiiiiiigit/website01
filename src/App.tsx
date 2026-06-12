@@ -1,6 +1,6 @@
 import './index.css'
 import { useEffect, useState } from 'react'
-
+import { AnimatedLogo } from './AnimatedLogo'
 /* ─── SVG Icons ───────────────────────────────────────────────────────── */
 const ArrowUpRight = ({ className = 'w-3.5 h-3.5' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth={1.5}>
@@ -125,17 +125,9 @@ function Hero() {
         <div
           className="appear grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 md:gap-12 items-center pt-8 pb-14"
         >
-          {/* Left — full logo with yantra + wordmark + taglines */}
+          {/* Left - full logo with yantra + wordmark + taglines */}
           <div style={{ flexShrink: 0 }}>
-            <img
-              src="/logo.svg"
-              alt="Redarc Labs"
-              style={{
-                display: 'block',
-                height: 'clamp(240px, 28vw, 380px)',
-                width: 'auto',
-              }}
-            />
+            <AnimatedLogo />
           </div>
 
           {/* Right — headline + sub + cta */}
@@ -325,7 +317,7 @@ function Research() {
     {
       tag: 'Deflection vectors',
       title: 'Thinking Model Emotions',
-      desc: 'Characterising functional emotion representations in chain-of-thought reasoning models. Extends Anthropic\'s 2026 "Biology of a Large Language Model" — the appendix deflection vector finding, left uncharacterised.',
+      desc: 'Characterising functional emotion representations in chain-of-thought reasoning models. Extends Anthropic\'s 2026 "Biology of a Large Language Model", specifically the appendix deflection vector finding, left uncharacterised.',
       href: 'https://github.com/punctualprocrastinator/thinking-model-emotions',
     },
     {
@@ -459,12 +451,12 @@ function About() {
     {
       n: '01',
       claim: <>Reasoning traces are <span style={{ color: 'var(--color-red)' }}>not</span> honest.</>,
-      evidence: 'Pre-commitment probe (AUC 0.780) shows models encode final answers before generating any reasoning token — CoT is post-hoc rationalisation.',
+      evidence: 'Pre-commitment probe (AUC 0.780) shows models encode final answers before generating any reasoning token; CoT is post-hoc rationalisation.',
     },
     {
       n: '02',
       claim: <>Models do <span style={{ color: 'var(--color-red)' }}>not</span> reveal capabilities when evaluated.</>,
-      evidence: 'Sandbagging — deliberate concealment — occurs in >98% of tested configurations. Standard evaluations operate at the output layer only.',
+      evidence: 'Sandbagging, or deliberate concealment, occurs in >98% of tested configurations. Standard evaluations operate at the output layer only.',
     },
     {
       n: '03',
@@ -474,7 +466,7 @@ function About() {
     {
       n: '04',
       claim: <>SAE features are <span style={{ color: 'var(--color-red)' }}>not</span> adversarially stable.</>,
-      evidence: 'SAE feature stability under adversarial perturbation — the exact perturbations a deceptively aligned model would induce — has never been measured.',
+      evidence: 'SAE feature stability under adversarial perturbation (the exact perturbations a deceptively aligned model would induce) has never been measured.',
     },
   ]
 
@@ -506,7 +498,7 @@ function About() {
                 marginBottom: '2rem',
               }}
             >
-              Four foundational assumptions break under adversarial conditions —
+              Four foundational assumptions break under adversarial conditions:
               the only conditions that matter for safety.
             </p>
 
@@ -571,7 +563,7 @@ function Team() {
     {
       name: 'Shivam Dubey',
       role: 'Co-Founder',
-      detail: 'BS Data Science, IIT Madras · 2023–2027',
+      detail: 'BS Data Science, IIT Madras, 2023 to 2027',
       socials: [
         { label: 'shivam@redarclabs.com', href: 'mailto:shivam@redarclabs.com' },
         { label: 'GitHub', href: 'https://github.com/punctualprocrastinator/' },
@@ -588,7 +580,7 @@ function Team() {
     {
       name: 'Manan Wadhwa',
       role: 'Co-Founder',
-      detail: 'Final year CS undergrad · 2023–2027',
+      detail: 'Final year CS undergrad, 2023 to 2027',
       socials: [
         { label: 'manan@redarclabs.com', href: 'mailto:manan@redarclabs.com' },
         { label: 'GitHub', href: 'https://github.com/Manan-Wadhwa/' },
@@ -848,7 +840,7 @@ function Landscape() {
 /* ─── Footer ──────────────────────────────────────────────────────────── */
 function Footer() {
   const col1 = [
-    { label: 'Toxin Feature Hierarchy — ICML 2026', href: 'https://openreview.net/pdf?id=Nb3y9BzCOi' },
+    { label: 'Toxin Feature Hierarchy, ICML 2026', href: 'https://openreview.net/pdf?id=Nb3y9BzCOi' },
     { label: 'Attractor Framework', href: 'https://github.com/punctualprocrastinator/Attractor-Framework' },
     { label: 'Thinking Model Emotions', href: 'https://github.com/punctualprocrastinator/thinking-model-emotions' },
     { label: 'Bipolar Defense', href: 'https://github.com/punctualprocrastinator/bipolar_defense_repo' },

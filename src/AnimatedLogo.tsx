@@ -1,0 +1,301 @@
+export function AnimatedLogo() { 
+  return <div style={{width: '100%', maxWidth: '480px', margin: '0 auto'}} dangerouslySetInnerHTML={{ __html: `<!-- ============================================================
+  Redarc Labs — Animated Logo Embed (final)
+  v2's cinematic entrance + v1's calm ambient loop.
+  Self-contained: copy this whole block into any page.
+  Prefix "rdl-" on everything. Respects prefers-reduced-motion.
+
+  Entrance:
+    0.0s  bindu ignites from a point of light
+    0.4s  shockwave expands, revealing rings/frame as it passes
+    0.9s  triangles trace themselves, fills wash in
+    2.0s  nodes ignite with a flash, settle into a slow pulse
+    2.4s  wordmark + taglines rise in, rule sweeps from center
+  Ambient loop (quiet):
+    · petals rotate slowly (90s)
+    · nodes pulse softly, staggered
+    · bindu pulses gently with an expanding halo
+============================================================= -->
+<div class="rdl-logo-wrap">
+<style>
+  .rdl-logo-wrap{display:flex;justify-content:center;align-items:center}
+  .rdl-logo-wrap svg{width:100%;max-width:480px;height:auto;display:block}
+
+  /* ============ ENTRANCE ============ */
+
+  /* bindu ignition: point of light grows */
+  .rdl-bindu{
+    transform-origin:340px 310px;
+    transform:scale(0);
+    animation:rdl-ignite .7s cubic-bezier(.2,1.4,.4,1) forwards;
+  }
+  @keyframes rdl-ignite{
+    0%{transform:scale(0)}
+    60%{transform:scale(1.6)}
+    100%{transform:scale(1)}
+  }
+
+  /* entrance shockwave */
+  .rdl-shockwave{
+    transform-origin:340px 310px;
+    animation:rdl-shock 1.3s .35s cubic-bezier(.1,.6,.3,1) forwards;
+    opacity:0;
+  }
+  @keyframes rdl-shock{
+    0%{transform:scale(.02);opacity:.9;stroke-width:3}
+    100%{transform:scale(1.45);opacity:0;stroke-width:.3}
+  }
+
+  /* structure revealed as the wave passes (delays ~ radius) */
+  .rdl-reveal{opacity:0;animation:rdl-fade .7s ease-out forwards}
+  .rdl-r1{animation-delay:.45s}   /* inner rings */
+  .rdl-r2{animation-delay:.65s}   /* lotus rings + petals */
+  .rdl-r3{animation-delay:.85s}   /* square + gates */
+  .rdl-r4{animation-delay:1.05s}  /* grid, corners */
+  @keyframes rdl-fade{to{opacity:1}}
+
+  /* triangles trace in */
+  .rdl-draw{
+    stroke-dasharray:1;stroke-dashoffset:1;
+    animation:rdl-draw 1.1s cubic-bezier(.5,0,.2,1) forwards;
+  }
+  .rdl-d1{animation-delay:.9s}
+  .rdl-d2{animation-delay:1.05s}
+  .rdl-d3{animation-delay:1.2s}
+  .rdl-d4{animation-delay:1.35s}
+  .rdl-d5{animation-delay:1.5s}
+  .rdl-d6{animation-delay:1.65s}
+  @keyframes rdl-draw{to{stroke-dashoffset:0}}
+
+  .rdl-fill-in{opacity:0;animation:rdl-fade 1s 1.9s ease-out forwards}
+
+  /* nodes: flash ignition then perpetual soft pulse */
+  .rdl-node{
+    opacity:0;transform-origin:center;transform-box:fill-box;
+    animation:rdl-fade .3s ease-out forwards,rdl-pulse 4.2s ease-in-out infinite;
+  }
+  .rdl-n1{animation-delay:2.0s,2.6s}
+  .rdl-n2{animation-delay:2.08s,3.0s}
+  .rdl-n3{animation-delay:2.16s,3.4s}
+  .rdl-n4{animation-delay:2.24s,3.8s}
+  .rdl-n5{animation-delay:2.32s,4.2s}
+  .rdl-n6{animation-delay:2.4s,4.6s}
+  @keyframes rdl-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+  .rdl-flash{
+    transform-origin:center;transform-box:fill-box;
+    opacity:0;
+    animation:rdl-flash .55s ease-out forwards;
+  }
+  .rdl-f1{animation-delay:2.0s}.rdl-f2{animation-delay:2.08s}
+  .rdl-f3{animation-delay:2.16s}.rdl-f4{animation-delay:2.24s}
+  .rdl-f5{animation-delay:2.32s}.rdl-f6{animation-delay:2.4s}
+  @keyframes rdl-flash{
+    0%{opacity:.9;transform:scale(.3)}
+    100%{opacity:0;transform:scale(3.2)}
+  }
+
+  /* text rises in */
+  .rdl-text{opacity:0;transform:translateY(10px);animation:rdl-rise .8s cubic-bezier(.2,.9,.3,1) forwards}
+  .rdl-t1{animation-delay:2.4s}.rdl-t2{animation-delay:2.55s}
+  .rdl-t3{animation-delay:2.7s}
+  @keyframes rdl-rise{to{opacity:1;transform:translateY(0)}}
+
+  /* rule sweeps out from center */
+  .rdl-rule{
+    transform-origin:340px 618px;transform:scaleX(0);opacity:0;
+    animation:rdl-sweep .7s 2.6s cubic-bezier(.2,.9,.3,1) forwards;
+  }
+  @keyframes rdl-sweep{to{transform:scaleX(1);opacity:.5}}
+
+  /* top bar loads across */
+  .rdl-bar{
+    transform-origin:0 0;transform:scaleX(0);
+    animation:rdl-bar 1.2s 1.0s cubic-bezier(.4,0,.2,1) forwards;
+  }
+  @keyframes rdl-bar{to{transform:scaleX(1)}}
+
+  /* ============ AMBIENT LOOP (quiet, from v1) ============ */
+
+  .rdl-petals-spin{transform-origin:340px 310px;animation:rdl-spin 90s linear infinite}
+  @keyframes rdl-spin{to{transform:rotate(360deg)}}
+
+  .rdl-bindu-pulse{
+    transform-origin:340px 310px;
+    animation:rdl-bindu 3.2s 1.2s ease-in-out infinite;
+  }
+  @keyframes rdl-bindu{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.18)}
+  }
+  .rdl-bindu-halo{
+    transform-origin:340px 310px;
+    opacity:0;
+    animation:rdl-halo 3.2s 1.2s ease-in-out infinite;
+  }
+  @keyframes rdl-halo{
+    0%{transform:scale(1);opacity:.5}
+    70%{transform:scale(2.6);opacity:0}
+    100%{transform:scale(2.6);opacity:0}
+  }
+
+  /* ============ REDUCED MOTION ============ */
+  @media (prefers-reduced-motion: reduce){
+    .rdl-logo-wrap *{animation:none !important}
+    .rdl-draw{stroke-dashoffset:0}
+    .rdl-reveal,.rdl-fill-in,.rdl-node,.rdl-text{opacity:1}
+    .rdl-bindu{transform:scale(1)}
+    .rdl-bar{transform:scaleX(1)}
+    .rdl-text{transform:none}
+    .rdl-rule{transform:scaleX(1);opacity:.5}
+    .rdl-shockwave,.rdl-flash,.rdl-bindu-halo{opacity:0 !important;display:none}
+  }
+</style>
+
+<svg viewBox="0 0 680 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Redarc Labs logo">
+  <title>Redarc Labs Logo</title>
+  <desc>Yantra-inspired geometric logo for Redarc Labs — Adversarial Interpretability for AI Safety</desc>
+
+  <!-- Background -->
+  <rect fill="#FFFFFF" width="680" height="720"/>
+
+  <!-- Red top bar (loads across) -->
+  <rect class="rdl-bar" fill="#C0392B" x="0" y="0" width="680" height="3"/>
+
+  <!-- Subtle grid -->
+  <g class="rdl-reveal rdl-r4" stroke="rgba(192,57,43,0.08)" stroke-width="0.5">
+    <line x1="0" y1="56" x2="680" y2="56"/>
+    <line x1="0" y1="84" x2="680" y2="84"/>
+    <line x1="56" y1="0" x2="56" y2="720"/>
+    <line x1="624" y1="0" x2="624" y2="720"/>
+  </g>
+
+  <!-- Outer square with gates -->
+  <g class="rdl-reveal rdl-r3" stroke="rgba(192,57,43,0.35)" fill="none" stroke-width="0.8">
+    <rect x="160" y="130" width="360" height="360"/>
+    <line x1="160" y1="200" x2="140" y2="200"/><line x1="160" y1="240" x2="140" y2="240"/>
+    <line x1="160" y1="370" x2="140" y2="370"/><line x1="160" y1="410" x2="140" y2="410"/>
+    <line x1="520" y1="200" x2="540" y2="200"/><line x1="520" y1="370" x2="540" y2="370"/>
+    <line x1="220" y1="130" x2="220" y2="110"/><line x1="420" y1="130" x2="420" y2="110"/>
+    <line x1="220" y1="490" x2="220" y2="510"/><line x1="420" y1="490" x2="420" y2="510"/>
+  </g>
+
+  <!-- Lotus rings + petals (slow rotation) -->
+  <g class="rdl-reveal rdl-r2">
+    <g stroke="rgba(192,57,43,0.2)" fill="none" stroke-width="0.5">
+      <circle cx="340" cy="310" r="155"/>
+      <circle cx="340" cy="310" r="145"/>
+    </g>
+    <g class="rdl-petals-spin">
+      <ellipse cx="340" cy="195" rx="16" ry="38" stroke="rgba(192,57,43,0.3)" fill="rgba(192,57,43,0.04)" stroke-width="0.7" transform="rotate(0,340,310)"/>
+      <ellipse cx="340" cy="195" rx="16" ry="38" stroke="rgba(192,57,43,0.3)" fill="rgba(192,57,43,0.04)" stroke-width="0.7" transform="rotate(45,340,310)"/>
+      <ellipse cx="340" cy="195" rx="16" ry="38" stroke="rgba(192,57,43,0.3)" fill="rgba(192,57,43,0.04)" stroke-width="0.7" transform="rotate(90,340,310)"/>
+      <ellipse cx="340" cy="195" rx="16" ry="38" stroke="rgba(192,57,43,0.3)" fill="rgba(192,57,43,0.04)" stroke-width="0.7" transform="rotate(135,340,310)"/>
+      <ellipse cx="340" cy="195" rx="16" ry="38" stroke="rgba(192,57,43,0.3)" fill="rgba(192,57,43,0.04)" stroke-width="0.7" transform="rotate(180,340,310)"/>
+      <ellipse cx="340" cy="195" rx="16" ry="38" stroke="rgba(192,57,43,0.3)" fill="rgba(192,57,43,0.04)" stroke-width="0.7" transform="rotate(225,340,310)"/>
+      <ellipse cx="340" cy="195" rx="16" ry="38" stroke="rgba(192,57,43,0.3)" fill="rgba(192,57,43,0.04)" stroke-width="0.7" transform="rotate(270,340,310)"/>
+      <ellipse cx="340" cy="195" rx="16" ry="38" stroke="rgba(192,57,43,0.3)" fill="rgba(192,57,43,0.04)" stroke-width="0.7" transform="rotate(315,340,310)"/>
+    </g>
+  </g>
+
+  <!-- Inner circles (solid, as original) -->
+  <g class="rdl-reveal rdl-r1" stroke="rgba(192,57,43,0.4)" fill="none">
+    <circle cx="340" cy="310" r="110" stroke-width="0.7"/>
+    <circle cx="340" cy="310" r="85" stroke-width="0.5"/>
+  </g>
+
+  <!-- Interlocking triangles: trace then fill -->
+  <polygon class="rdl-draw rdl-d1" pathLength="1" points="340,155 462,352 218,352" stroke="#C0392B" fill="none" stroke-width="1"/>
+  <polygon class="rdl-fill-in" points="340,155 462,352 218,352" fill="rgba(192,57,43,0.06)"/>
+  <polygon class="rdl-draw rdl-d2" pathLength="1" points="340,465 218,268 462,268" stroke="rgba(192,57,43,0.7)" fill="none" stroke-width="0.8"/>
+  <polygon class="rdl-fill-in" points="340,465 218,268 462,268" fill="rgba(192,57,43,0.03)"/>
+  <polygon class="rdl-draw rdl-d3" pathLength="1" points="340,205 432,363 248,363" stroke="#C0392B" fill="none" stroke-width="0.7"/>
+  <polygon class="rdl-fill-in" points="340,205 432,363 248,363" fill="rgba(192,57,43,0.04)"/>
+  <polygon class="rdl-draw rdl-d4" pathLength="1" points="340,415 248,257 432,257" stroke="rgba(192,57,43,0.7)" fill="none" stroke-width="0.6"/>
+  <polygon class="rdl-fill-in" points="340,415 248,257 432,257" fill="rgba(192,57,43,0.03)"/>
+  <polygon class="rdl-draw rdl-d5" pathLength="1" points="340,248 398,345 282,345" stroke="#C0392B" fill="none" stroke-width="0.8"/>
+  <polygon class="rdl-fill-in" points="340,248 398,345 282,345" fill="rgba(192,57,43,0.08)"/>
+  <polygon class="rdl-draw rdl-d6" pathLength="1" points="340,372 282,275 398,275" stroke="rgba(192,57,43,0.7)" fill="none" stroke-width="0.7"/>
+  <polygon class="rdl-fill-in" points="340,372 282,275 398,275" fill="rgba(192,57,43,0.05)"/>
+
+  <!-- Central hexagon -->
+  <polygon class="rdl-draw rdl-d6" pathLength="1" points="340,275 363,288 363,313 340,326 317,313 317,288" stroke="#C0392B" fill="none" stroke-width="1"/>
+  <polygon class="rdl-fill-in" points="340,275 363,288 363,313 340,326 317,313 317,288" fill="rgba(192,57,43,0.12)"/>
+
+  <!-- Node ignition flashes -->
+  <g fill="rgba(192,57,43,0.5)">
+    <circle class="rdl-flash rdl-f1" cx="340" cy="155" r="5"/>
+    <circle class="rdl-flash rdl-f2" cx="462" cy="268" r="5"/>
+    <circle class="rdl-flash rdl-f3" cx="462" cy="352" r="5"/>
+    <circle class="rdl-flash rdl-f4" cx="340" cy="465" r="5"/>
+    <circle class="rdl-flash rdl-f5" cx="218" cy="352" r="5"/>
+    <circle class="rdl-flash rdl-f6" cx="218" cy="268" r="5"/>
+  </g>
+
+  <!-- Apex nodes -->
+  <g class="rdl-node rdl-n1"><circle fill="#C0392B" cx="340" cy="155" r="5"/><circle fill="#FFFFFF" cx="340" cy="155" r="2.5"/></g>
+  <g class="rdl-node rdl-n2"><circle fill="#C0392B" cx="462" cy="268" r="5"/><circle fill="#FFFFFF" cx="462" cy="268" r="2.5"/></g>
+  <g class="rdl-node rdl-n3"><circle fill="#C0392B" cx="462" cy="352" r="5"/><circle fill="#FFFFFF" cx="462" cy="352" r="2.5"/></g>
+  <g class="rdl-node rdl-n4"><circle fill="#C0392B" cx="340" cy="465" r="5"/><circle fill="#FFFFFF" cx="340" cy="465" r="2.5"/></g>
+  <g class="rdl-node rdl-n5"><circle fill="#C0392B" cx="218" cy="352" r="5"/><circle fill="#FFFFFF" cx="218" cy="352" r="2.5"/></g>
+  <g class="rdl-node rdl-n6"><circle fill="#C0392B" cx="218" cy="268" r="5"/><circle fill="#FFFFFF" cx="218" cy="268" r="2.5"/></g>
+
+  <!-- Mid nodes -->
+  <g class="rdl-node rdl-n2"><circle fill="rgba(192,57,43,0.5)" cx="340" cy="205" r="4"/><circle fill="#FFFFFF" cx="340" cy="205" r="2"/></g>
+  <g class="rdl-node rdl-n3"><circle fill="rgba(192,57,43,0.5)" cx="432" cy="257" r="4"/><circle fill="#FFFFFF" cx="432" cy="257" r="2"/></g>
+  <g class="rdl-node rdl-n4"><circle fill="rgba(192,57,43,0.5)" cx="432" cy="363" r="4"/><circle fill="#FFFFFF" cx="432" cy="363" r="2"/></g>
+  <g class="rdl-node rdl-n5"><circle fill="rgba(192,57,43,0.5)" cx="340" cy="415" r="4"/><circle fill="#FFFFFF" cx="340" cy="415" r="2"/></g>
+  <g class="rdl-node rdl-n6"><circle fill="rgba(192,57,43,0.5)" cx="248" cy="363" r="4"/><circle fill="#FFFFFF" cx="248" cy="363" r="2"/></g>
+  <g class="rdl-node rdl-n1"><circle fill="rgba(192,57,43,0.5)" cx="248" cy="257" r="4"/><circle fill="#FFFFFF" cx="248" cy="257" r="2"/></g>
+
+  <!-- Hexagon vertices -->
+  <g class="rdl-node rdl-n1"><circle fill="#C0392B" cx="340" cy="275" r="4"/><circle fill="#FFFFFF" cx="340" cy="275" r="1.8"/></g>
+  <g class="rdl-node rdl-n2"><circle fill="#C0392B" cx="363" cy="288" r="4"/><circle fill="#FFFFFF" cx="363" cy="288" r="1.8"/></g>
+  <g class="rdl-node rdl-n3"><circle fill="#C0392B" cx="363" cy="313" r="4"/><circle fill="#FFFFFF" cx="363" cy="313" r="1.8"/></g>
+  <g class="rdl-node rdl-n4"><circle fill="#C0392B" cx="340" cy="326" r="4"/><circle fill="#FFFFFF" cx="340" cy="326" r="1.8"/></g>
+  <g class="rdl-node rdl-n5"><circle fill="#C0392B" cx="317" cy="313" r="4"/><circle fill="#FFFFFF" cx="317" cy="313" r="1.8"/></g>
+  <g class="rdl-node rdl-n6"><circle fill="#C0392B" cx="317" cy="288" r="4"/><circle fill="#FFFFFF" cx="317" cy="288" r="1.8"/></g>
+
+  <!-- Entrance shockwave -->
+  <circle class="rdl-shockwave" cx="340" cy="310" r="155" fill="none" stroke="#C0392B"/>
+
+  <!-- Central bindu: ignition entrance, gentle pulse + halo loop -->
+  <g class="rdl-bindu">
+    <circle class="rdl-bindu-halo" fill="none" stroke="rgba(192,57,43,0.5)" stroke-width="1" cx="340" cy="310" r="10"/>
+    <g class="rdl-bindu-pulse">
+      <circle fill="#C0392B" cx="340" cy="310" r="7"/>
+      <circle fill="#FFFFFF" cx="340" cy="310" r="3"/>
+      <circle fill="#C0392B" cx="340" cy="310" r="1"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <text class="rdl-text rdl-t1" x="340" y="570" text-anchor="middle"
+    font-family="Georgia, Times New Roman, serif" font-size="46" fill="#0F1923"
+    letter-spacing="-0.5">Red<tspan fill="#C0392B">arc</tspan> <tspan fill="rgba(15,25,35,0.5)" font-size="36">Labs</tspan></text>
+
+  <!-- Tagline -->
+  <text class="rdl-text rdl-t2" x="340" y="600" text-anchor="middle"
+    font-family="Helvetica Neue, Arial, sans-serif" font-size="11"
+    fill="rgba(15,25,35,0.45)" letter-spacing="3">ADVERSARIAL INTERPRETABILITY · AI SAFETY</text>
+
+  <!-- Rule -->
+  <line class="rdl-rule" x1="240" y1="618" x2="440" y2="618" stroke="#C0392B" stroke-width="1"/>
+
+  <!-- Sub-tagline -->
+  <text class="rdl-text rdl-t3" x="340" y="640" text-anchor="middle"
+    font-family="Helvetica Neue, Arial, sans-serif" font-size="9.5"
+    fill="rgba(15,25,35,0.45)" letter-spacing="1.5">WHERE THE SAFETY LAYER HOLDS</text>
+
+  <!-- Corner marks -->
+  <g class="rdl-reveal rdl-r4" stroke="rgba(192,57,43,0.3)" stroke-width="0.8">
+    <line x1="40" y1="40" x2="70" y2="40"/><line x1="40" y1="40" x2="40" y2="70"/>
+    <line x1="640" y1="40" x2="610" y2="40"/><line x1="640" y1="40" x2="640" y2="70"/>
+    <line x1="40" y1="680" x2="70" y2="680"/><line x1="40" y1="680" x2="40" y2="650"/>
+    <line x1="640" y1="680" x2="610" y2="680"/><line x1="640" y1="680" x2="640" y2="650"/>
+  </g>
+</svg>
+</div>
+<!-- ================= end Redarc Labs embed (final) ================= -->
+` }} />; 
+}
