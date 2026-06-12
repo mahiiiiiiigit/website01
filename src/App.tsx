@@ -121,17 +121,9 @@ function Hero() {
       }}
     >
       <div className="container-site">
-        {/* Side-by-side: logo left, text right */}
+        {/* Responsive layout: stacks on mobile, side-by-side on md+ */}
         <div
-          className="appear"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'auto 1fr',
-            gap: '3rem',
-            alignItems: 'center',
-            paddingTop: '2rem',
-            paddingBottom: '3.5rem',
-          }}
+          className="appear grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 md:gap-12 items-center pt-8 pb-14"
         >
           {/* Left — full logo with yantra + wordmark + taglines */}
           <div style={{ flexShrink: 0 }}>
