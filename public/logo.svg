@@ -121,13 +121,13 @@
   font-size="9.5" fill="rgba(15,25,35,0.45)"
   letter-spacing="1.5">WHERE THE SAFETY LAYER HOLDS</text>
 
-<!-- Pre-incorporation badge -->
-<rect x="268" y="655" width="104" height="18" rx="2"
+<!-- Nonprofit badge -->
+<rect x="308" y="655" width="64" height="18" rx="2"
   fill="none" stroke="rgba(192,57,43,0.3)" stroke-width="0.7"/>
-<text x="320" y="668" text-anchor="middle"
+<text x="340" y="668" text-anchor="middle"
   font-family="Helvetica Neue, Arial, sans-serif"
   font-size="7.5" fill="rgba(192,57,43,0.6)"
-  letter-spacing="1.5">PRE-INCORPORATION</text>
+  letter-spacing="1.5">NONPROFIT</text>
 
 <!-- Corner marks -->
 <line stroke="rgba(192,57,43,0.3)" x1="40" y1="40" x2="70" y2="40" stroke-width="0.8"/>

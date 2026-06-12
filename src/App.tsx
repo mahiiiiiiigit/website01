@@ -153,7 +153,7 @@ function Hero() {
                 margin: '0 0 1.25rem 0',
               }}
             >
-              AI Safety Research · Pre-incorporation · New Delhi · 2026
+              AI Safety Research · Nonprofit · 2026
             </p>
 
             <h1
@@ -734,7 +734,7 @@ function Team() {
 /* ─── Landscape ───────────────────────────────────────────────────────── */
 function Landscape() {
   const orgs = [
-    { name: 'Redarc Labs', adv: true, mech: true, dec: true, stage: 'Pre-incorporation', self: true },
+    { name: 'Redarc Labs', adv: true, mech: true, dec: true, stage: 'Nonprofit', self: true },
     { name: 'Gray Swan AI', adv: true, mech: false, dec: 'Behavioural', stage: 'Seed · $5.5M' },
     { name: 'Apollo Research', adv: 'Partial', mech: 'Partial', dec: true, stage: 'PBC' },
     { name: 'METR', adv: false, mech: false, dec: 'Output-only', stage: 'Nonprofit' },
