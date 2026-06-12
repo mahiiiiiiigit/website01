@@ -19,7 +19,6 @@
 </defs>
 
 <!-- Background -->
-<rect class="bg" fill="none" width="680" height="720"/>
 
 <!-- Red top bar -->
 <rect fill="#C0392B" x="0" y="0" width="680" height="3"/>
