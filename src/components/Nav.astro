@@ -1,0 +1,130 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const links = [
+  { label: 'Publications', href: '#publications' },
+  { label: 'Research', href: '#research' },
+  { label: 'About', href: '#about' },
+  { label: 'Team', href: '#team' },
+];
+---
+<nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-200 border-b border-transparent bg-white/0">
+  <div class="container-site">
+    <div class="flex items-center justify-between h-14">
+      {/* Logo */}
+      <a href="#" aria-label="Redarc Labs" class="flex items-center">
+        <img
+          src="/logo.svg"
+          alt="Redarc Labs"
+          class="h-7 w-auto"
+          style="display: block;"
+        />
+      </a>
+
+      <ul class="hidden md:flex items-center gap-7">
+        {links.map(l => (
+          <li>
+            <a href={l.href} class="nav-a">{l.label}</a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="hidden md:flex items-center gap-3">
+        <ThemeToggle />
+        <a href="mailto:hello@redarclabs.com" class="btn btn-ink">
+          Contact
+        </a>
+      </div>
+
+      {/* Mobile toggle */}
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-1.5 cursor-pointer text-[var(--color-ink)]"
+        aria-label="Toggle menu"
+      >
+        <svg id="menu-icon-closed" viewBox="0 0 18 14" class="w-5 h-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="0" y1="2" x2="18" y2="2" />
+          <line x1="0" y1="7" x2="18" y2="7" />
+          <line x1="0" y1="12" x2="18" y2="12" />
+        </svg>
+        <svg id="menu-icon-open" viewBox="0 0 18 14" class="w-5 h-4 hidden" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M1 1l16 12M17 1L1 13" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile drawer */}
+  <div
+    id="mobile-menu-drawer"
+    class="md:hidden overflow-hidden transition-all duration-200 max-h-0 bg-[var(--color-paper)] border-t border-transparent"
+  >
+    <div class="container-site py-4 flex flex-col gap-3">
+      {links.map(l => (
+        <a href={l.href} class="nav-a py-1 text-sm mobile-menu-link">
+          {l.label}
+        </a>
+      ))}
+      <div class="flex items-center justify-between mt-1">
+        <a href="mailto:hello@redarclabs.com" class="btn btn-ink w-fit">
+          Contact
+        </a>
+        <ThemeToggle />
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+  const iconClosed = document.getElementById('menu-icon-closed');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const mobileLinks = document.querySelectorAll('.mobile-menu-link');
+
+  let isSolid = false;
+  let isOpen = false;
+
+  function updateNav() {
+    if (window.scrollY > 16) {
+      if (!isSolid) {
+        navbar?.classList.add('nav-solid');
+        navbar?.classList.remove('border-transparent', 'bg-white/0');
+        isSolid = true;
+      }
+    } else {
+      if (isSolid) {
+        navbar?.classList.remove('nav-solid');
+        navbar?.classList.add('border-transparent', 'bg-white/0');
+        isSolid = false;
+      }
+    }
+  }
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+    if (isOpen) {
+      mobileMenuDrawer?.classList.remove('max-h-0', 'border-transparent');
+      mobileMenuDrawer?.classList.add('max-h-72', 'border-[var(--color-rule)]');
+      iconClosed?.classList.add('hidden');
+      iconOpen?.classList.remove('hidden');
+    } else {
+      mobileMenuDrawer?.classList.remove('max-h-72', 'border-[var(--color-rule)]');
+      mobileMenuDrawer?.classList.add('max-h-0', 'border-transparent');
+      iconClosed?.classList.remove('hidden');
+      iconOpen?.classList.add('hidden');
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav(); // init
+
+  mobileMenuBtn?.addEventListener('click', toggleMenu);
+  
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (isOpen) toggleMenu();
+    });
+  });
+</script>

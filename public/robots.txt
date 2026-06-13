@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://redarclabs.com/sitemap.xml
+Sitemap: https://redarclabs.com/sitemap-index.xml
