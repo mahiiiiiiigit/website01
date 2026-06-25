@@ -1,16 +1,9 @@
 ---
 import '../index.css';
-import '../App.css';
 import Nav from '../components/Nav.astro';
 import AnimatedLogo from '../components/AnimatedLogo.astro';
 
-const ArrowUpRight = `<svg class="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M2 12L12 2M12 2H5M12 2v7" />
-</svg>`;
 
-const GithubIcon = `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-  <path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
-</svg>`;
 
 const pubs = [
   {
@@ -153,18 +146,15 @@ const orgs = [
   { name: 'Redwood Research', adv: false, mech: true, dec: 'Partial', stage: 'Nonprofit' },
 ];
 
-const col1 = [
-  { label: 'Toxin Feature Hierarchy, ICML 2026', href: 'https://openreview.net/pdf?id=Nb3y9BzCOi' },
-  { label: 'Attractor Framework', href: 'https://github.com/punctualprocrastinator/Attractor-Framework' },
-  { label: 'Thinking Model Emotions', href: 'https://github.com/punctualprocrastinator/thinking-model-emotions' },
-  { label: 'Bipolar Defense', href: 'https://github.com/punctualprocrastinator/bipolar_defense_repo' },
-];
+const pip = (v: boolean | string) =>
+  v === true  ? '✓' :
+  v === false ? '—' :
+  String(v);
 
-const getPipHtml = (v: boolean | string) => {
-  if (v === true) return '<span style="color: var(--color-red); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600;">✓</span>';
-  if (v === false) return '<span style="color: var(--color-ink-faint); font-family: var(--font-mono); font-size: 0.8rem;">—</span>';
-  return `<span style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--color-ink-muted); letter-spacing: 0.03em;">${v}</span>`;
-};
+const pipStyle = (v: boolean | string) =>
+  v === true  ? 'color:var(--color-red);font-family:var(--font-mono);font-size:0.75rem;font-weight:600' :
+  v === false ? 'color:var(--color-ink-faint);font-family:var(--font-mono);font-size:0.8rem' :
+                'font-family:var(--font-mono);font-size:0.625rem;color:var(--color-ink-muted);letter-spacing:0.03em';
 ---
 <!doctype html>
 <html lang="en">
@@ -178,12 +168,12 @@ const getPipHtml = (v: boolean | string) => {
     <meta property="og:description" content="Building interpretability tools that work when models are actively non-cooperative." />
     <meta property="og:url" content="https://redarclabs.com" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://redarclabs.com/logo.svg" />
+    <meta property="og:image" content="https://redarclabs.com/logo.png" />
     
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Redarc Labs — Adversarial Interpretability for AI Safety" />
     <meta name="twitter:description" content="Building interpretability tools that work when models are actively non-cooperative." />
-    <meta name="twitter:image" content="https://redarclabs.com/logo.svg" />
+    <meta name="twitter:image" content="https://redarclabs.com/logo.png" />
 
     <link rel="canonical" href="https://redarclabs.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -350,7 +340,7 @@ const getPipHtml = (v: boolean | string) => {
                       class="inline-flex items-center gap-1.5 link-paper"
                       style="font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink); text-decoration: none; border-bottom: 1px solid var(--color-rule-strong); padding-bottom: 1px; transition: border-color 120ms;"
                     >
-                      Read paper <span set:html={ArrowUpRight} />
+                      Read paper <svg class="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12L12 2M12 2H5M12 2v7" /></svg>
                     </a>
                   ) : (
                     <span style="font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-muted);">
@@ -385,7 +375,7 @@ const getPipHtml = (v: boolean | string) => {
                     rel="noopener noreferrer"
                     class="repo-row group"
                   >
-                    <div class="repo-icon" style="padding-top: 2px; color: var(--color-ink-faint); flex-shrink: 0; transition: color 120ms;" set:html={GithubIcon} />
+                    <div class="repo-icon" style="padding-top: 2px; color: var(--color-ink-faint); flex-shrink: 0; transition: color 120ms;"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" /></svg></div>
                     <div style="flex: 1;">
                       <div class="flex flex-wrap items-baseline gap-3 mb-1">
                         <span class="h3" style="font-size: 0.9375rem;">{r.title}</span>
@@ -395,11 +385,7 @@ const getPipHtml = (v: boolean | string) => {
                         {r.desc}
                       </p>
                     </div>
-                    <div
-                      class="repo-arrow group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      style="color: var(--color-ink-faint); flex-shrink: 0; align-self: center; transition: color 120ms, transform 120ms;"
-                      set:html={ArrowUpRight}
-                    />
+                    <div class="repo-arrow group-hover:translate-x-0.5 group-hover:-translate-y-0.5" style="color: var(--color-ink-faint); flex-shrink: 0; align-self: center; transition: color 120ms, transform 120ms;"><svg class="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12L12 2M12 2H5M12 2v7" /></svg></div>
                   </a>
                 ))}
               </div>
@@ -514,9 +500,9 @@ const getPipHtml = (v: boolean | string) => {
                         <td style={`padding: 0.75rem 1rem; font-weight: ${o.self ? 600 : 450}; color: ${o.self ? 'var(--color-red)' : 'var(--color-ink)'}; letter-spacing: -0.01em; white-space: nowrap;`}>
                           {o.name}
                         </td>
-                        <td style="padding: 0.75rem 1rem; text-align: center;" set:html={getPipHtml(o.adv)}></td>
-                        <td style="padding: 0.75rem 1rem; text-align: center;" set:html={getPipHtml(o.mech)}></td>
-                        <td style="padding: 0.75rem 1rem; text-align: center;" set:html={getPipHtml(o.dec)}></td>
+                        <td style="padding: 0.75rem 1rem; text-align: center;"><span style={pipStyle(o.adv)}>{pip(o.adv)}</span></td>
+                        <td style="padding: 0.75rem 1rem; text-align: center;"><span style={pipStyle(o.mech)}>{pip(o.mech)}</span></td>
+                        <td style="padding: 0.75rem 1rem; text-align: center;"><span style={pipStyle(o.dec)}>{pip(o.dec)}</span></td>
                         <td style="padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 0.625rem; color: var(--color-ink-muted); letter-spacing: 0.04em; white-space: nowrap;">
                           {o.stage}
                         </td>
@@ -547,17 +533,14 @@ const getPipHtml = (v: boolean | string) => {
               Work
             </p>
             <ul style="list-style: none; margin: 0; padding: 0;">
-              {col1.map(l => (
+              {[
+                ['Toxin Feature Hierarchy, ICML 2026', 'https://openreview.net/pdf?id=Nb3y9BzCOi'],
+                ['Attractor Framework', 'https://github.com/punctualprocrastinator/Attractor-Framework'],
+                ['Thinking Model Emotions', 'https://github.com/punctualprocrastinator/thinking-model-emotions'],
+                ['Bipolar Defense', 'https://github.com/punctualprocrastinator/bipolar_defense_repo'],
+              ].map(([label, href]) => (
                 <li style="margin-bottom: 0.625rem;">
-                  <a
-                    href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="footer-link"
-                    style="font-size: 0.8125rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 120ms;"
-                  >
-                    {l.label}
-                  </a>
+                  <a href={href} target="_blank" rel="noopener noreferrer" class="footer-link" style="font-size: 0.8125rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 120ms;">{label}</a>
                 </li>
               ))}
             </ul>
@@ -595,11 +578,6 @@ const getPipHtml = (v: boolean | string) => {
             Redarc Labs · Where the safety layer holds
           </span>
           <div style="display: flex; gap: 1rem; align-items: center;">
-            <a
-              href="mailto:hello@redarclabs.com"
-              class="footer-bottom-link"
-              style="font-family: var(--font-mono); font-size: 0.5875rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.18); text-decoration: none; transition: color 120ms;"
-            >hello@redarclabs.com</a>
             <a
               href="https://www.linkedin.com/company/redarc-labs/"
               target="_blank"
