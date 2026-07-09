@@ -1,0 +1,369 @@
+---
+// PLACEHOLDER / DUMMY CONTENT: The copy on this page is placeholder content for Redarc Labs weekly research log and curriculum.
+// It can be easily edited or swapped out in the arrays below.
+
+import '../index.css';
+import Nav from '../components/Nav.astro';
+
+const weeks = [
+  {
+    num: "Week 1",
+    title: "Foundations & Onboarding",
+    desc: "Kicked off with an intro to transformer circuits and read through 'A Mathematical Framework for Transformer Circuits.' Set up local environments for activation patching experiments."
+  },
+  {
+    num: "Week 2",
+    title: "Sparse Autoencoders",
+    desc: "Deep dive into SAE training and feature extraction. Ran first pass of dictionary learning on a small transformer, discussed polysemanticity and superposition."
+  },
+  {
+    num: "Week 3",
+    title: "Adversarial Robustness",
+    desc: "Explored FGSM and PGD attacks against interpretability tools. Started replicating the refusal-circuit findings from the Bipolar Defense repo across new architectures."
+  }
+];
+
+const curriculum = [
+  {
+    id: "unit-1",
+    title: "Unit 1 — Foundations of Mechanistic Interpretability",
+    expanded: true,
+    items: [
+      "Intro to transformer circuits",
+      "Reading: A Mathematical Framework for Transformer Circuits",
+      "Hands-on lab: activation patching basics",
+      "Discussion: what does it mean for a model to be \"interpretable\"?"
+    ]
+  },
+  {
+    id: "unit-2",
+    title: "Unit 2 — Adversarial & Robustness Methods",
+    expanded: false,
+    items: [
+      "Sparse autoencoders and feature geometry",
+      "Adversarial perturbation basics (FGSM, PGD)",
+      "Refusal circuit taxonomy across architectures",
+      "Case study: sandbagging and evaluation gaming"
+    ]
+  },
+  {
+    id: "unit-3",
+    title: "Unit 3 — Evaluations & Deception",
+    expanded: false,
+    items: [
+      "Designing evaluations resistant to sandbagging",
+      "Case study: alignment faking under scratchpad removal",
+      "Discussion: what counts as a \"faithful\" evaluation?",
+      "Lab: building a simple deception probe"
+    ]
+  },
+  {
+    id: "unit-4",
+    title: "Unit 4 — Scaling & Generalization",
+    expanded: false,
+    items: [
+      "How interpretability findings hold up across model sizes",
+      "Reading: cross-architecture generalization of refusal circuits",
+      "Hands-on: replicating a small finding on two model sizes",
+      "Discussion: what breaks when you scale up?"
+    ]
+  },
+  {
+    id: "unit-5",
+    title: "Unit 5 — Applied Safety Research (Capstone)",
+    expanded: false,
+    items: [
+      "Choosing an open research direction",
+      "Weekly check-ins and peer review structure",
+      "Final write-up and presentation format",
+      "Discussion: turning a finding into a publishable result"
+    ]
+  }
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community — Redarc Labs</title>
+    <meta name="description" content="What our research community has been working through, week by week, at Redarc Labs." />
+    <meta name="keywords" content="AI safety, mechanistic interpretability, adversarial robustness, research curriculum, community log" />
+    <meta property="og:title" content="Community — Redarc Labs" />
+    <meta property="og:description" content="A running log of what our research community has been working through, week by week." />
+    <meta property="og:url" content="https://redarclabs.com/community" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://redarclabs.com/logo.png" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Community — Redarc Labs" />
+    <meta name="twitter:description" content="A running log of what our research community has been working through, week by week." />
+    <meta name="twitter:image" content="https://redarclabs.com/logo.png" />
+
+    <link rel="canonical" href="https://redarclabs.com/community" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    
+    <script is:inline>
+      (function() {
+        try {
+          var savedTheme = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <!-- Hero / Header -->
+      <section
+        id="community-hero"
+        style="background: var(--color-paper); border-bottom: 1px solid var(--color-rule); padding-top: 5rem; overflow: hidden;"
+      >
+        <div class="container-site">
+          <div class="appear pt-8 pb-14">
+            <h1
+              class="h2 appear-1"
+              style="margin: 0; line-height: 1.15; max-width: 25ch;"
+            >
+              Community
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      <!-- Three Week-Recap Cards -->
+      <section
+        id="week-recaps"
+        class="sec"
+        style="background: var(--color-paper-warm); border-bottom: 1px solid var(--color-rule);"
+      >
+        <div class="container-site">
+          <!-- Heading directly above week boxes -->
+          <div style="margin-bottom: 2.5rem;">
+            <span class="eyebrow">COMMUNITY</span>
+            <h2 class="h2" style="margin: 0 0 0.5rem 0; line-height: 1.2;">What has happened so far</h2>
+            <p style="font-size: 0.9375rem; color: var(--color-ink-sec); line-height: 1.6; margin: 0; max-width: 60ch;">
+              A running log of what our research community has been working through, week by week.
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+            {weeks.map(w => (
+              <div class="assum-item" style="background: var(--color-paper); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <span style="font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: var(--color-red); display: block; margin-bottom: 0.75rem;">
+                    {w.num}
+                  </span>
+                  <h3 class="h3" style="margin-bottom: 0.75rem; font-size: 1.0625rem;">{w.title}</h3>
+                  <p style="font-size: 0.8125rem; color: var(--color-ink-sec); line-height: 1.65; margin: 0;">
+                    {w.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Curriculum Accordion Section -->
+      <section
+        id="curriculum"
+        class="sec"
+        style="background: var(--color-paper); border-bottom: 1px solid var(--color-rule);"
+      >
+        <div class="container-site">
+          <div class="grid lg:grid-cols-[220px_1fr] gap-8 lg:gap-16">
+            <div>
+              <span class="eyebrow">Curriculum</span>
+              <h2 class="h2" style="margin: 0; line-height: 1.2;">Program Outline</h2>
+            </div>
+            <div>
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                {curriculum.map(unit => (
+                  <div class="accordion-item" style="border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper-warm); overflow: hidden;">
+                    <button
+                      class="accordion-toggle animate-none"
+                      aria-expanded={unit.expanded ? "true" : "false"}
+                      style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; background: none; border: none; cursor: pointer; text-align: left; color: var(--color-ink);"
+                    >
+                      <span class="h3" style="margin: 0; flex-grow: 1; font-weight: 560;">{unit.title}</span>
+                      <svg
+                        class={`chevron-icon w-4 h-4 transition-transform duration-200 ${unit.expanded ? 'rotate-90' : ''}`}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        style="width: 1rem; height: 1rem; color: var(--color-ink-sec);"
+                      >
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </button>
+                    <div
+                      class="accordion-content transition-all duration-200 ease-in-out overflow-hidden"
+                      style={unit.expanded ? "max-height: none; border-top: 1px solid var(--color-rule);" : "max-height: 0px; border-top: 1px solid transparent;"}
+                    >
+                      <div style="padding: 0 1.5rem 1rem 1.5rem;">
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                          {unit.items.map(item => (
+                            <li class="list-item" style="padding: 1rem 0; border-color: var(--color-rule);">
+                              <span style="font-size: 0.8125rem; color: var(--color-ink-sec);">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-soot); border-top: 1px solid var(--color-soot-rule);">
+      <div class="container-site py-12 md:py-16">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+          <div>
+            <img
+              src="/logo.svg"
+              alt="Redarc Labs"
+              style="display: block; height: 8rem; width: auto; margin-bottom: 1.25rem; filter: brightness(0) invert(1);"
+            />
+          </div>
+          <div>
+            <p style="font-family: var(--font-mono); font-size: 0.5875rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 1rem;">
+              Work
+            </p>
+            <ul style="list-style: none; margin: 0; padding: 0;">
+              {[
+                ['Toxin Feature Hierarchy, ICML 2026', 'https://openreview.net/pdf?id=Nb3y9BzCOi'],
+                ['Attractor Framework', 'https://github.com/punctualprocrastinator/Attractor-Framework'],
+                ['Thinking Model Emotions', 'https://github.com/punctualprocrastinator/thinking-model-emotions'],
+                ['Bipolar Defense', 'https://github.com/punctualprocrastinator/bipolar_defense_repo'],
+              ].map(([label, href]) => (
+                <li style="margin-bottom: 0.625rem;">
+                  <a href={href} target="_blank" rel="noopener noreferrer" class="footer-link" style="font-size: 0.8125rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 120ms;">{label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p style="font-family: var(--font-mono); font-size: 0.5875rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 1rem;">
+              Contact
+            </p>
+            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.625rem;">
+              <li>
+                <a
+                  href="mailto:hello@redarclabs.com"
+                  class="footer-link"
+                  style="font-size: 0.8125rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 120ms;"
+                >
+                  hello@redarclabs.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/redarc-labs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="footer-link inline-flex items-center gap-1.5"
+                  style="font-size: 0.8125rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 120ms;"
+                >
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: 1px solid var(--color-soot-rule); padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem;">
+          <span style="font-family: var(--font-mono); font-size: 0.5875rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.18);">
+            Redarc Labs · Where the safety layer holds
+          </span>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <a
+              href="https://www.linkedin.com/company/redarc-labs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-bottom-link"
+              style="font-family: var(--font-mono); font-size: 0.5875rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.18); text-decoration: none; transition: color 120ms;"
+            >redarclabs.com</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style is:global>
+      .link-paper:hover {
+        border-color: var(--color-ink) !important;
+      }
+      .repo-row:hover .repo-icon {
+        color: var(--color-ink) !important;
+      }
+      .social-link:hover {
+        border-color: var(--color-red) !important;
+        color: var(--color-red) !important;
+      }
+      .footer-link:hover {
+        color: rgba(255,255,255,0.85) !important;
+      }
+      .footer-bottom-link:hover {
+        color: rgba(255,255,255,0.5) !important;
+      }
+    </style>
+
+    <!-- Accordion Script logic -->
+    <script>
+      const accordions = document.querySelectorAll('.accordion-item');
+      
+      accordions.forEach(item => {
+        const toggle = item.querySelector('.accordion-toggle');
+        const content = item.querySelector('.accordion-content') as HTMLElement;
+        const chevron = item.querySelector('.chevron-icon');
+        
+        toggle?.addEventListener('click', () => {
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          
+          if (isExpanded) {
+            // Collapse accordion item
+            toggle.setAttribute('aria-expanded', 'false');
+            chevron?.classList.remove('rotate-90');
+            
+            // Explicitly set scrollHeight before animating down to 0
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.offsetHeight; // trigger reflow
+            content.style.maxHeight = '0px';
+            content.style.borderTopColor = 'transparent';
+          } else {
+            // Expand accordion item
+            toggle.setAttribute('aria-expanded', 'true');
+            chevron?.classList.add('rotate-90');
+            
+            content.style.borderTopColor = 'var(--color-rule)';
+            content.style.maxHeight = content.scrollHeight + 'px';
+            
+            // Set max-height to none after transition completes to preserve responsiveness
+            content.addEventListener('transitionend', function handler() {
+              if (toggle.getAttribute('aria-expanded') === 'true') {
+                content.style.maxHeight = 'none';
+              }
+              content.removeEventListener('transitionend', handler);
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

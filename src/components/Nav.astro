@@ -2,17 +2,18 @@
 import ThemeToggle from './ThemeToggle.astro';
 
 const links = [
-  { label: 'Publications', href: '#publications' },
-  { label: 'Research', href: '#research' },
-  { label: 'About', href: '#about' },
-  { label: 'Team', href: '#team' },
+  { label: 'Publications', href: '/#publications' },
+  { label: 'Research', href: '/#research' },
+  { label: 'About', href: '/#about' },
+  { label: 'Team', href: '/#team' },
+  { label: 'Community', href: '/community' },
 ];
 ---
 <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-200 border-b border-transparent bg-white/0">
   <div class="container-site">
     <div class="flex items-center justify-between h-14">
       {/* Logo */}
-      <a href="#" aria-label="Redarc Labs" class="flex items-center">
+      <a href="/" aria-label="Redarc Labs" class="flex items-center">
         <img
           src="/logo.svg"
           alt="Redarc Labs"
